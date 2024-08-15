@@ -1,16 +1,13 @@
 import React from "react";
 import { createRoot } from 'react-dom/client';
 
-// const element = React.createElement(
-//   'h2',
-//   { className: 'eleemnt' },
-//   'Привет из Реакта!'
-// )
+// const element = <h2 className="element">Привет из Реакта+jsx!</h2>;
+const messages = ['Привет из Реакта+jsx!', 'Сегодня 15.08.2024.'];
 
+const Message = props => <p>{props.text}</p>;
 
-console.log(document.getElementById('root'));
+const Messages = props => props.messages.map(message => <Message text={message} />);
 
 const root = createRoot(document.getElementById('root'));
 
-
-// root.render(element);
+root.render(<Messages messages={messages} />);
