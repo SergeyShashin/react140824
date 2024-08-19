@@ -7,28 +7,33 @@ export class Messenger extends Component {
     super(props);
     this.state = {
       messages: [
-        { author: 'Друг', text: 'Привет, друг!' },
-        { author: 'Друг', text: 'Как дела?' },
-        { author: 'Друг', text: 'Как погода?' },
-        { author: 'Друг', text: 'Как настроение?' },
+        // { author: 'Друг', text: 'Привет, друг!' },
+        // { author: 'Друг', text: 'Как дела?' },
+        // { author: 'Друг', text: 'Как погода?' },
+        // { author: 'Друг', text: 'Как настроение?' },
       ],
     };
   }
 
-  send = (msg) => {
-    // this.state.messages.concat([msg]);
-    // this.setState({ messages: this.state.messages.concat([msg]) })
+  handleSend = (message) => {
+    this.setState({ messages: this.state.messages.concat([message]) });
   }
 
-  // componentDidUpdate() {
-  //   console.log(this.state.messages);
+  componentDidUpdate() {
+    let { author } = this.state.messages[this.state.messages.length - 1];
+    if (author !== 'Бот') {
+      setTimeout(() => this.setState({
+        messages: this.state.messages.concat({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` })
+      }), 1000)
+    }
+  }
 
-  // }
+
 
   render() {
     return (
       <section>
-        <MessageField send={this.send} />
+        <MessageField send={this.handleSend} />
         <MessagesList messages={this.state.messages} />
       </section>
     )
