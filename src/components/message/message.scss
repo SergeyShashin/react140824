@@ -1,2 +1,14 @@
 .message {
+  color: purple;
+  &-owner {
+    align-self: end;
+  }
+
+  &-companion {
+    align-self: start;
+  }
+
+  &-sender {
+    color: purple;
+  }
 }
