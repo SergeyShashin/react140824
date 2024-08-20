@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Messenger } from "components/Messenger";
+import { Messenger } from "components/messenger";
 
 export class App extends Component {
   constructor(props) {
