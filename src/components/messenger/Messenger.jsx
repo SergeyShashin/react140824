@@ -2,8 +2,8 @@ import './messenger.scss';
 
 import React, { Component } from "react";
 
-import { MessageField } from "components/MessageField";
-import { MessagesList } from "components/MessagesList";
+import { Layout } from "components/Layout";
+
 
 export class Messenger extends Component {
   constructor(props) {
@@ -27,17 +27,14 @@ export class Messenger extends Component {
     if (author !== 'Бот') {
       setTimeout(() => this.setState({
         messages: this.state.messages.concat({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` })
-      }), 1000)
+      }), 1000);
     }
   }
-
-
 
   render() {
     return (
       <section className='messenger'>
-        <MessageField send={this.handleSend} />
-        <MessagesList messages={this.state.messages} />
+        <Layout />
       </section>
     )
   }
