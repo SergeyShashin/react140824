@@ -1,4 +1,7 @@
+import './messenger.scss';
+
 import React, { Component } from "react";
+
 import { MessageField } from "components/MessageField";
 import { MessagesList } from "components/MessagesList";
 
@@ -32,7 +35,7 @@ export class Messenger extends Component {
 
   render() {
     return (
-      <section>
+      <section className='messenger'>
         <MessageField send={this.handleSend} />
         <MessagesList messages={this.state.messages} />
       </section>

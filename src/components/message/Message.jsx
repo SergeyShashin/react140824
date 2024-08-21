@@ -1,15 +1,12 @@
 import './message.scss';
-import React, { Component } from "react";
 
+import React, { Component } from "react";
 import classNames from 'classnames';
 
 export class Message extends Component {
   constructor(props) {
     super(props);
 
-    // const classes=classNames('message', {
-    //   author:
-    // })
   }
 
   // get align() {
@@ -26,11 +23,19 @@ export class Message extends Component {
 
 
   render() {
+    let { author } = this.props.message;
+    let { text } = this.props.message;
+
+    const classes = classNames('message', {
+      'message-owner': author !== 'Бот',
+      'message-companion': author === 'Бот',
+    });
+
     return (
       // <section className='message' style={{ alignSelf: `flex-${this.align}`}}>
-      <section className='message' >
-        <p>{this.props.message.text}</p>
-        <p className='sender'>{this.props.message.author}</p>
+      <section className={classes} >
+        <p>{text}</p>
+        <p className='message-sender'>{author}</p>
       </section>
     )
   }
