@@ -34,31 +34,32 @@ export class Layout extends Component {
   }
 
   render() {
+    console.log(this.props);
 
     return (
-      <section className='layout'>
-        <Header />
-        <div className="layout-content">
-          <div className="chats">
-            <div id="chat">1 чат</div>
-            <div id="chat">2 чат</div>
-            <div id="chat">3 чат</div>
-            <div id="chat">4 чат</div>
-            <div id="chat">5 чат</div>
-            <div id="chat">6 чат</div>
-            <div id="chat">7 чат</div>
-            <div id="chat">8 чат</div>
-            <div id="chat">9 чат</div>
-            <div id="chat">10 чат</div>
-            <div id="chat">11 чат</div>
-            <div id="chat">12 чат</div>
-          </div>
-          <div className="inputOutput">
-            <MessageField send={this.handleSend} />
-            <MessagesList messages={this.state.messages} />
-          </div>
+    <section className='layout'>
+      <Header />
+      <div className="layout-content">
+        <div className="chats">
+          <div id="chat">1 чат</div>
+          <div id="chat">2 чат</div>
+          <div id="chat">3 чат</div>
+          <div id="chat">4 чат</div>
+          <div id="chat">5 чат</div>
+          <div id="chat">6 чат</div>
+          <div id="chat">7 чат</div>
+          <div id="chat">8 чат</div>
+          <div id="chat">9 чат</div>
+          <div id="chat">10 чат</div>
+          <div id="chat">11 чат</div>
+          <div id="chat">12 чат</div>
         </div>
-      </section>
+        <div className="inputOutput">
+          <MessageField send={this.handleSend} />
+          <MessagesList messages={this.state.messages} />
+        </div>
+      </div>
+    </section>
     );
   }
 }
