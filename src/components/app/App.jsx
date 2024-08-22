@@ -7,6 +7,7 @@ export class App extends Component {
   }
 
   render() {
+
     return (
       <section>
         <Messenger />

@@ -11,13 +11,12 @@ export class Messenger extends Component {
     
   }
 
- 
-
   render() {
     return (
       <section className='messenger'>
-        <Layout />
+        <Layout  />
       </section>
+
     )
   }
 } 

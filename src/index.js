@@ -4,6 +4,8 @@ import React from "react";
 import { createRoot } from 'react-dom/client';
 import { App } from 'components/app';
 
+
+
 // const element = <h2 className="element">Привет из Реакта+jsx!</h2>;
 // const messages = ['Привет из Реакта+jsx!', 'Сегодня 15.08.2024.'];
 
@@ -15,3 +17,4 @@ const root = createRoot(document.getElementById('root'));
 
 // root.render(<Messages messages={messages} />);
 root.render(<App />);
+

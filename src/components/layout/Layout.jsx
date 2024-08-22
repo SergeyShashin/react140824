@@ -34,6 +34,7 @@ export class Layout extends Component {
   }
 
   render() {
+
     return (
       <section className='layout'>
         <Header />
