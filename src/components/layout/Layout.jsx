@@ -36,10 +36,11 @@ export class Layout extends Component {
 
   handleSend = (message) => {
     if (message && this.state.selectChat) {
-      let chat = this.chats[selectChat];
-      const messages = [...this.state.chats[this.state.selectChat]];
-      this.setState({ chat: messages.concat([message]) });
-      // this.setState({ messages: this.state.messages.concat([message]) });
+      let { selectChat } = this.state;
+      let messages = this.state.chats[selectChat];
+      messages = [...messages.concat([message])];
+      console.log(messages);
+      this.setState({ chats: this.state.chats.selectChat = messages });
     }
   }
 
@@ -48,8 +49,8 @@ export class Layout extends Component {
   };
 
   componentDidUpdate() {
-    const { messages } = this.state.chats[this.state.selectChat];
-    // const { messages } = this.state
+    let { selectChat } = this.state;
+    const messages = this.state.chats[selectChat];
 
     if (messages.length < 1) {
       return
@@ -57,19 +58,14 @@ export class Layout extends Component {
 
     let { author } = messages[messages.length - 1];
 
-    if (author !== 'Бот') {
-      setTimeout(() => this.handleSend({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` }), 1000);
-      // setTimeout(() => this.setState({
-      //   messages: messages.concat({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` })
-      // }), 1000);
-    }
+    // if (author !== 'Бот') {
+    //   setTimeout(() => this.handleSend({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` }), 1000);
+    // }
   }
 
   render() {
     let { selectChat } = this.state;
-    const { messages } = this.state.chats[selectChat];
-    // const { messages } = this.state;
-    console.log(messages);
+    const messages = this.state.chats[selectChat];
 
     return (
       <section className='layout'>
