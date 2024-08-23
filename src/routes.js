@@ -1,13 +1,13 @@
-import { App } from 'components/App';
+// import { App } from 'components/App';
 
-export const routes = [
-  {
-    path: '/',
-    element: '<App />',
-  },
+// export const routes = [
+//   {
+//     path: '/',
+//     component: App,
+//   },
 
-  // {
-  //   path: '/chats/:id',
-  //   element: <App />
-  // }
-]
+//   {
+//     path: '/chats/:id',
+//     component: App
+//   }
+// ]

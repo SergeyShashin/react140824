@@ -4,7 +4,7 @@ import './routes.js';
 import React from "react";
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { App } from 'components/app';
+import { App } from 'components/app';
 import { routes } from './routes.js';
 
 
@@ -17,18 +17,22 @@ import { routes } from './routes.js';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      {
-        routes.map((route, idx) => {
-          console.log(route);
-          <Route key={idx} path={route.path} element={route.element} />
-        })
-      }
-      {/*  <Route path="/" element={<App />} /> */}
-    </Routes> */
-  </BrowserRouter>
+  <App />
 );
+
+// root.render(
+//   <BrowserRouter>
+//     <Routes>
+//       {
+//         routes.map((route, idx) => {
+//           console.log(route);
+//           <Route key={idx} {...route} />
+//         })
+//       }
+//       {/*  <Route path="/" element={<App />} /> */}
+//     </Routes> */
+//   </BrowserRouter>
+// );
 
 
 
