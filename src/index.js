@@ -1,8 +1,11 @@
 import 'assets/global.scss';
+import './routes.js';
 
 import React from "react";
 import { createRoot } from 'react-dom/client';
-import { App } from 'components/app';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { App } from 'components/app';
+import { routes } from './routes.js';
 
 
 // const element = <h2 className="element">Привет из Реакта+jsx!</h2>;
@@ -14,9 +17,19 @@ import { App } from 'components/app';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <App />
-  );
-  
+  <BrowserRouter>
+    <Routes>
+      {
+        routes.map((route, idx) => {
+          console.log(route);
+          <Route key={idx} path={route.path} element={route.element} />
+        })
+      }
+      {/*  <Route path="/" element={<App />} /> */}
+    </Routes> */
+  </BrowserRouter>
+);
+
 
 
 
