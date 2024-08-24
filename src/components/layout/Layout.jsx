@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 // import ListItem from '@mui/material/ListItem';
 // import ListItemText from '@mui/material/ListItemText'
 // import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 import { Header } from 'components/Header';
 import { MessageField } from "components/MessageField";
@@ -16,18 +17,19 @@ export class Layout extends Component {
     super(props);
     this.state = {
       selectChat: null,
-      messages: [
-        // { author: 'Друг', text: 'Привет, друг!' },
-        // { author: 'Друг', text: 'Как дела?' },
-        // { author: 'Друг', text: 'Как погода?' },
-        // { author: 'Друг', text: 'Как настроение?' },
-      ],
+      // messages: [
+      // { author: 'Друг', text: 'Привет, друг!' },
+      // { author: 'Друг', text: 'Как дела?' },
+      // { author: 'Друг', text: 'Как погода?' },
+      // { author: 'Друг', text: 'Как настроение?' },
+      // ],
       chats: {
         '1': [
-          { author: 'Друг', text: 'Привет, друг!' },
-          { author: 'Друг', text: 'Как дела?' },
-          { author: 'Друг', text: 'Как погода?' },
-          { author: 'Друг', text: 'Как настроение?' },
+          // { author: 'Друг', text: 'Привет, друг!' },
+          // { author: 'Друг', text: 'Как дела?' },
+          // { author: 'Друг', text: 'Как погода?' },
+          // { author: 'Друг', text: 'Как настроение?' },
+          { author: 'Бот', text: `Чат ${'1'} добавлен.` }
         ],
 
       }
@@ -39,8 +41,10 @@ export class Layout extends Component {
       let { selectChat } = this.state;
       let messages = this.state.chats[selectChat];
       messages = [...messages.concat([message])];
-      console.log(messages);
-      this.setState({ chats: this.state.chats.selectChat = messages });
+      const updatedChat = Object.create(this.state.chats);
+      updatedChat[selectChat] = messages;
+      this.setState({ chats: Object.assign(this.state.chats, updatedChat) });
+      console.log(this.state);
     }
   }
 
@@ -52,36 +56,45 @@ export class Layout extends Component {
     let { selectChat } = this.state;
     const messages = this.state.chats[selectChat];
 
+    if (!messages) {
+      return
+    }
+
     if (messages.length < 1) {
       return
     }
 
     let { author } = messages[messages.length - 1];
 
-    // if (author !== 'Бот') {
-    //   setTimeout(() => this.handleSend({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` }), 1000);
-    // }
+    if (author !== 'Бот') {
+      setTimeout(() => this.handleSend({ author: 'Бот', text: `Здравствуйте, ${author}. Ваше сообщение получено.` }), 1000);
+    }
+  }
+
+  addChat = () => {
+    let newChat = prompt('Какое имя чата?');
+    this.state.chats[newChat] = [{ author: 'Бот', text: `Чат ${newChat} добавлен.` }];
+    console.log(this.state);
+    this.setState({ chats: this.state.chats, selectChat: newChat });
   }
 
   render() {
     let { selectChat } = this.state;
     const messages = this.state.chats[selectChat];
 
+    let listChats = Object.keys(this.state.chats);
+    console.log('списко чатов' + listChats);
+
     return (
       <section className='layout'>
         <Header />
         <div className="layout-content">
           <div className='chats' onClick={this.handlerClickChats}>
-            <p id="1">чат 1</p>
-            <p id="2">чат 2</p>
-            <p id="3">чат 3</p>
-            <p id="4">чат 4</p>
-            <p id="5">чат 5</p>
-            <p id="6">чат 6</p>
-            <p id="7">чат 7</p>
-            <p id="8">чат 8</p>
-            <p id="9">чат 9</p>
-            <p id="10">чат 10</p>
+            {/* <p id="1">чат 1</p> */}
+            {listChats.map((chatName, idx) => <p key={idx} id={chatName}>{`${chatName} чат`}</p>)}
+            <Button onClick={this.addChat}>Добавить</Button>
+
+
           </div>
           {/* <List className="chats">
                 <ListItem >
@@ -92,7 +105,7 @@ export class Layout extends Component {
                   </Link>
                 </ListItem>
               </List> */}
-          <div className="inputOutput">
+          < div className="inputOutput" >
             {!this.state.selectChat && <code>Для начала общения можете выбрать чат.</code>}
             {this.state.selectChat && <MessageField send={this.handleSend} />}
             {this.state.selectChat && <MessagesList messages={messages} />}
