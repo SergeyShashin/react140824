@@ -83,7 +83,7 @@ export class Layout extends Component {
     const messages = this.state.chats[selectChat];
 
     let listChats = Object.keys(this.state.chats);
-    console.log('списко чатов' + listChats);
+    console.log('список чатов' + listChats);
 
     return (
       <section className='layout'>
